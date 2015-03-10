@@ -1,0 +1,16 @@
+{
+  "name": "phaser_project",
+  "version": "0.0.1",
+  "description": "A Phaser project with browserify and gulp as build tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "Jesse Harlin <harlinjesse@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "phaser": "^2.2.2"
+  }
+}
