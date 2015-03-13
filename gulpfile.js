@@ -3,7 +3,7 @@
 
 
   require('./gulp/deploy');
-
+  require('./gulp/build');
 
 
   gulp.task('help', help);
