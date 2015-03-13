@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    browserify = require('browserify')
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream')
 
 ;
 
@@ -7,10 +8,11 @@ var gulp = require('gulp'),
 var src = './src/game.js',
     dist = './dist';
 
-
 function browserifyScripts(){
 
     return browserify(src)
+      .bundle()
+      .pipe(source('game.js'))
       .pipe(gulp.dest(dist));
 
 }
