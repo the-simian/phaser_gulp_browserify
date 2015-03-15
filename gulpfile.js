@@ -4,6 +4,7 @@
 
   require('./gulp/deploy');
   require('./gulp/build');
+  require('./gulp/analysis');
 
 
   gulp.task('help', tasklisting);
