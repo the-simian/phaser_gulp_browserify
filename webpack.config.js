@@ -11,17 +11,15 @@ var phaserWebpackLoader = path.join(loaders, 'phaser.js'),
   debugLoader = path.join(loaders, 'debug-file.js');
 
 var phaser = path.join(phaserModule, '/dist/phaser.js'),
-  p2 = path.join(phaserModule, '/dist/p2.js'),
-  pixi = path.join(phaserModule, '/dist/pixi.js'),
   phaserDebug = path.join(__dirname, '/node_modules/phaser-debug/dist/phaser-debug.js');
 
 module.exports = {
   context: __dirname,
-  entry: './src/game.js',
+  entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'js'),
     publicPath: 'assets/', // relative path for github pages
-    filename: 'game.js', // no hash in main.js because index.html is a static page
+    filename: 'index.js', // no hash in main.js because index.html is a static page
     chunkFilename: '[hash]/js/[id].js',
     hotUpdateMainFilename: '[hash]/update.json',
     hotUpdateChunkFilename: '[hash]/js/[id].update.js'
@@ -48,9 +46,7 @@ module.exports = {
   resolve: {
     alias: {
       'phaser': phaser,
-      'phaser-debug': phaserDebug,
-      'p2': p2,
-      'pixi': pixi
+      'phaser-debug': phaserDebug
     }
   }
 };

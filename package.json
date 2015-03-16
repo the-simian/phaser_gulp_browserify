@@ -16,7 +16,9 @@
     "gulp-webpack-build": "0.x.x",
     "phaser": "2.x.x",
     "phaser-debug": "1.x.x",
-    "plato": "1.x.x"
+    "plato": "1.x.x",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
     "body-parser": "1.12.x",

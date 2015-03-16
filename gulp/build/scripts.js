@@ -1,13 +1,19 @@
 'use strict'
 
 var gulp = require('gulp'),
+  path = require('path'),
   webpack = require('gulp-webpack-build');
 
-var src = 'webpack.config.js',
-  dist = './dist';
+var _webpack = require("webpack");
+var WebpackDevServer = require("webpack-dev-server");
+
+
+var configFile = 'webpack.config.js',
+  dest = './dist',
+  src = './src/**/*.*';
 
 var formatOpts = {
-  version: false,
+  version: true,
   timings: true
 };
 
@@ -29,14 +35,32 @@ var webpackOptions = {
 function assembleScripts() {
 
   return gulp
-    .src(src)
+    .src(configFile)
     .pipe(webpack.configure(webpackConfig))
     .pipe(webpack.overrides(webpackOptions))
     .pipe(webpack.compile())
     .pipe(webpack.format(formatOpts))
     .pipe(webpack.failAfter(failOpts))
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(dest));
 }
 
+
+function updateBuild(eve) {
+  if (eve.type !== 'changed') {
+    return;
+  }
+
+
+  assembleScripts();
+}
+
+function watchScripts() {
+  return gulp
+    .watch(src)
+    .on('change', assembleScripts);
+}
+
+
+gulp.task('watch-scripts', watchScripts);
 
 gulp.task('build-scripts', assembleScripts);

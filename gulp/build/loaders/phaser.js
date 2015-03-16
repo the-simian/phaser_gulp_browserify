@@ -8,7 +8,7 @@ module.exports = function(source) {
   source = source.replace(/"object"==typeof exports/, 'false');
 
   // Fix for `Phaser` to depend on `PIXI` exported before in the same file.
-  source = source.replace(/(var\s+\w+\s*=\s*)Phaser(\s*\|\|\s*\{)/, 'var PIXI = exports.PIXI || require("pixi"); $1Phaser$2');
+  source = source.replace(/(var\s+\w+\s*=\s*)Phaser(\s*\|\|\s*\{)/, 'var PIXI = exports.PIXI; $1Phaser$2');
 
   // Do not replace `module.exports` object, only put a property on `exports`.
   source = source.replace(/typeof module !== 'undefined' && module\.exports/g, "false /* typeof module !== 'undefined' && module.exports */");
@@ -22,7 +22,7 @@ module.exports = function(source) {
   // Fix for direct reference to global `document`. Works without this patch, too.
   source = 'var document = global.document;\n\n' + source;
   
-  console.log('>>>>>>>> PHASER LOADER SHIMMED FILE <<<<<<<<<<<');
+  console.log('Shimming Phaser File');
   
   return source;
 };
