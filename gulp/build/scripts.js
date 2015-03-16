@@ -1,20 +1,42 @@
 'use strict'
 
 var gulp = require('gulp'),
-  browserify = require('browserify'),
-  source = require('vinyl-source-stream');
+  webpack = require('gulp-webpack-build');
 
-
-var src = './src/game.js',
+var src = 'webpack.config.js',
   dist = './dist';
 
-function browserifyScripts() {
+var formatOpts = {
+  version: false,
+  timings: true
+};
 
-  return browserify(src)
-    .bundle()
-    .pipe(source('game.js'))
+var failOpts = {
+  errors: true,
+  warnings: false
+};
+
+var webpackOptions = {
+    debug: true,
+    devtool: '#source-map',
+    watchDelay: 200
+  },
+  webpackConfig = {
+    useMemoryFs: true,
+    progress: true
+  };
+
+function assembleScripts() {
+
+  return gulp
+    .src(src)
+    .pipe(webpack.configure(webpackConfig))
+    .pipe(webpack.overrides(webpackOptions))
+    .pipe(webpack.compile())
+    .pipe(webpack.format(formatOpts))
+    .pipe(webpack.failAfter(failOpts))
     .pipe(gulp.dest(dist));
 }
 
 
-gulp.task('build-scripts', browserifyScripts);
+gulp.task('build-scripts', assembleScripts);

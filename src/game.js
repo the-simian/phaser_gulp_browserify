@@ -1,8 +1,10 @@
 'use strict';
 
-var Phaser = require('phaser');
+var Phaser = require('phaser').Phaser;
 var game;
 
+
+console.log('Phaser', Phaser);
 
 game = new Phaser.Game(600, 600, Phaser.AUTO, 'phaser_game');
 
@@ -26,4 +28,6 @@ var bootState = {
 
 game.state.add('boot', bootState);
 
-game.start('boot');
+game.state.start('boot');
+
+console.log('game', game);
