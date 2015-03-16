@@ -8,6 +8,7 @@ var loaders = path.join(__dirname, '/gulp/build/loaders/'),
 
 var phaserWebpackLoader = path.join(loaders, 'phaser.js'),
   phaserWebpackDebugLoader = path.join(loaders, 'phaser-debug.js'),
+  glFragmentLoader =   path.join(loaders, 'gl-fragment.js'),
   debugLoader = path.join(loaders, 'debug-file.js');
 
 var phaser = path.join(phaserModule, '/dist/phaser.js'),
@@ -33,6 +34,10 @@ module.exports = {
       {
         test: /phaser-debug\.js$/i,
         loader: 'phaser-debug-webpack-loader'
+      },
+      {
+        test: /\.frag$/i,
+        loader: 'gl-fragment-loader'
       }
     ]
   },
@@ -40,6 +45,7 @@ module.exports = {
     alias: {
       'phaser-webpack-loader': phaserWebpackLoader,
       'phaser-debug-webpack-loader': phaserWebpackDebugLoader,
+      'gl-fragment-loader': glFragmentLoader,
       'debug-loader': debugLoader
     }
   },
