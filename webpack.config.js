@@ -1,17 +1,17 @@
 'use strict';
 
-var webpack = require('webpack');
+
 var path = require('path');
 
 var loaders = path.join(__dirname, '/gulp/build/loaders/'),
-    phaserModule = path.join(__dirname, '/node_modules/phaser/');
+  phaserModule = path.join(__dirname, '/node_modules/phaser/');
 
 var phaserWebpackLoader = path.join(loaders, 'phaser.js'),
   phaserWebpackDebugLoader = path.join(loaders, 'phaser-debug.js'),
   debugLoader = path.join(loaders, 'debug-file.js');
 
 var phaser = path.join(phaserModule, '/dist/phaser-arcade-physics.js'),
-    p2 = path.join(phaserModule, '/dist/p2.js'),
+  p2 = path.join(phaserModule, '/dist/p2.js'),
   phaserDebug = path.join(__dirname, '/node_modules/phaser-debug/dist/phaser-debug.js');
 
 
@@ -38,7 +38,7 @@ module.exports = {
         test: /phaser-debug\.js$/i,
         loader: 'phaser-debug-webpack-loader'
       }
-      
+
 //      , {
 //        test: /\.js$/i,
 //        loader: 'debug-loader'
