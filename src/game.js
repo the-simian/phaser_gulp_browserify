@@ -1,3 +1,5 @@
+'use strict';
+
 var Phaser = require('phaser');
 var game;
 
@@ -13,7 +15,7 @@ function createBootState() {
     fill: '#e0e4f0',
     align: 'center'
   };
-  
+
   var headText = game.add.text(game.world.centerX, 32, headerText, headerTextStyle);
 
 }
