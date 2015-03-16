@@ -10,12 +10,10 @@ var phaserWebpackLoader = path.join(loaders, 'phaser.js'),
   phaserWebpackDebugLoader = path.join(loaders, 'phaser-debug.js'),
   debugLoader = path.join(loaders, 'debug-file.js');
 
-var phaser = path.join(phaserModule, '/dist/phaser-arcade-physics.js'),
+var phaser = path.join(phaserModule, '/dist/phaser.js'),
   p2 = path.join(phaserModule, '/dist/p2.js'),
+  pixi = path.join(phaserModule, '/dist/pixi.js'),
   phaserDebug = path.join(__dirname, '/node_modules/phaser-debug/dist/phaser-debug.js');
-
-
-console.log('phaserWebpackLoader', phaserWebpackLoader);
 
 module.exports = {
   context: __dirname,
@@ -31,18 +29,13 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /phaser-arcade-physics\.js$/i,
+        test: /phaser\.js$/i,
         loader: 'phaser-webpack-loader'
       },
       {
         test: /phaser-debug\.js$/i,
         loader: 'phaser-debug-webpack-loader'
       }
-
-//      , {
-//        test: /\.js$/i,
-//        loader: 'debug-loader'
-//      }
     ]
   },
   resolveLoader: {
@@ -56,7 +49,8 @@ module.exports = {
     alias: {
       'phaser': phaser,
       'phaser-debug': phaserDebug,
-      'p2': p2
+      'p2': p2,
+      'pixi': pixi
     }
   }
 };
